@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 700" role="img" aria-labelledby="title desc">
+  <title id="title">Ilustración de inicio de Windows</title>
+  <desc id="desc">Pantalla azul de inicio con el símbolo de Windows y un indicador de carga.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0755a6" />
+      <stop offset="0.55" stop-color="#087bd3" />
+      <stop offset="1" stop-color="#20b4e8" />
+    </linearGradient>
+    <linearGradient id="pane" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.98" />
+      <stop offset="1" stop-color="#c8edff" stop-opacity="0.9" />
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="42%" r="60%">
+      <stop offset="0" stop-color="#74d5ff" stop-opacity="0.34" />
+      <stop offset="1" stop-color="#0755a6" stop-opacity="0" />
+    </radialGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#003f7c" flood-opacity="0.3" />
+    </filter>
+  </defs>
+  <rect width="1400" height="700" fill="url(#background)" />
+  <rect width="1400" height="700" fill="url(#glow)" />
+  <circle cx="180" cy="95" r="190" fill="#ffffff" opacity="0.035" />
+  <circle cx="1260" cy="620" r="260" fill="#ffffff" opacity="0.045" />
+  <g transform="translate(590 205)" filter="url(#shadow)" fill="url(#pane)">
+    <path d="M0 28 94 14v91H0z" />
+    <path d="m108 12 122-18v111H108z" />
+    <path d="M0 119h94v91L0 196z" />
+    <path d="m108 119h122v111l-122-18z" />
+  </g>
+  <text x="700" y="495" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="27" font-weight="500" letter-spacing="1.5">Iniciando Windows</text>
+  <g fill="#ffffff">
+    <circle cx="676" cy="555" r="5" opacity="0.48" />
+    <circle cx="696" cy="555" r="5" opacity="0.68" />
+    <circle cx="716" cy="555" r="5" opacity="0.9" />
+    <circle cx="736" cy="555" r="5" opacity="0.68" />
+  </g>
+</svg>
