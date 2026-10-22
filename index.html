@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Soporte Técnico Profesional</title>
+    <meta name="description" content="Servicios de soporte técnico, formateos, instalación de aplicaciones, Office 365 y visitas a domicilio." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --primary: #ff7a00;
+        --primary-dark: #df5c00;
+        --accent: #00b7ff;
+        --accent-2: #1ed29d;
+        --soft-blue: #eaf8ff;
+        --soft-orange: #fff3e7;
+        --soft-green: #ebfff7;
+        --dark: #0d1727;
+        --text: #1f2937;
+        --muted: #5f6d7a;
+        --light: #f4f7fb;
+        --white: #ffffff;
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        background: #ffffff;
+        color: var(--text);
+        line-height: 1.6;
+      }
+      img { max-width: 100%; display: block; }
+      a { text-decoration: none; }
+      .container { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+      .site-header {
+        background: #ffffff;
+        border-bottom: 1px solid rgba(17,24,39,0.08);
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(14px);
+      }
+      .nav {
+        min-height: 96px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 28px;
+        position: relative;
+      }
+      .brand-placeholder {
+        width: 190px;
+        height: 88px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: none;
+        padding: 0;
+        margin: 0;
+      }
+      .logo {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        filter: none;
+        display: block;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        flex-wrap: wrap;
+        margin-left: auto;
+      }
+      .nav-links a {
+        color: var(--dark);
+        font-weight: 600;
+      }
+      .nav-links a:hover { color: var(--primary); }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 22px;
+        border-radius: 12px;
+        font-weight: 700;
+        transition: transform 0.2s ease;
+      }
+      .btn:hover { transform: translateY(-1px); }
+      .btn-primary {
+        background: linear-gradient(135deg, var(--primary), #ff9f1c, var(--accent));
+        color: #fff;
+        box-shadow: 0 14px 30px rgba(255, 122, 0, 0.28);
+      }
+      .btn-secondary {
+        background: #ffffff;
+        color: var(--dark);
+        border: 1px solid rgba(17,24,39,0.12);
+      }
+      .btn-whatsapp {
+        background: linear-gradient(135deg, #25d366, #1ea952);
+        color: #fff;
+        box-shadow: 0 14px 30px rgba(37, 211, 102, 0.28);
+      }
+      .hero {
+        padding: 44px 0 40px;
+        background: #ffffff;
+      }
+      main,
+      .section,
+      .site-footer,
+      .partners {
+        background: #ffffff;
+      }
+      .partners {
+        display: none;
+        border-top: 1px solid rgba(13, 23, 39, 0.05);
+        border-bottom: 1px solid rgba(13, 23, 39, 0.05);
+        padding: 14px 0;
+      }
+      .partners-row {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .partners-row span,
+      .partners-row a {
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--soft-blue), var(--soft-orange));
+        color: var(--dark);
+        font-weight: 700;
+        font-size: 0.8rem;
+        border: 1px solid rgba(0, 183, 255, 0.15);
+      }
+      .partners-row a:hover,
+      .partners-row a:focus-visible,
+      .partners-row a:active {
+        color: #fff;
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        border-color: transparent;
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+      .partners-row a:active { background: var(--primary-dark); transform: scale(.97); }
+      .partners-row a,
+      .mobile-service-menu a {
+        transition: color .2s ease, background .2s ease, border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+      }
+      .partners-row .nav-icon { display: none; }
+      .mobile-service-menu { display: none; }
+      .desktop-service-menu {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .desktop-service-menu a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 13px;
+        border: 1px solid rgba(0, 183, 255, .16);
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--soft-blue), var(--soft-orange));
+        color: var(--dark);
+        font-size: .88rem;
+        font-weight: 700;
+        white-space: nowrap;
+        transition: color .2s ease, background .2s ease, border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+      }
+      .desktop-service-menu a:hover,
+      .desktop-service-menu a:focus-visible {
+        color: #fff;
+        border-color: transparent;
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        box-shadow: 0 8px 18px rgba(255, 122, 0, .2);
+        transform: translateY(-2px);
+      }
+      .desktop-service-menu a:active { background: var(--primary-dark); transform: scale(.97); }
+      .desktop-service-menu i { font-size: .95rem; }
+      .section {
+        padding: 32px 0;
+      }
+      .section-heading {
+        margin-bottom: 14px;
+      }
+      .section-heading h2 {
+        margin: 0;
+        color: var(--dark);
+        font-size: clamp(1.5rem, 2.4vw, 2rem);
+        line-height: 1.2;
+      }
+      .section-intro {
+        max-width: 680px;
+        margin: 10px 0 0;
+        color: var(--muted);
+      }
+      .trust-section { padding: 44px 0; }
+      .steps-grid,
+      .faq-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 22px;
+      }
+      .step-card,
+      .faq-item,
+      .trust-panel {
+        border: 1px solid rgba(13, 23, 39, 0.08);
+        border-radius: 20px;
+        background: #fff;
+        box-shadow: 0 12px 28px rgba(15, 23, 42, 0.04);
+      }
+      .step-card { padding: 22px; }
+      .step-number {
+        display: grid;
+        width: 42px;
+        height: 42px;
+        margin-bottom: 14px;
+        place-items: center;
+        border-radius: 13px;
+        background: linear-gradient(135deg, var(--soft-orange), var(--soft-blue));
+        color: var(--dark);
+        font-weight: 800;
+      }
+      .step-card h3,
+      .faq-item summary,
+      .trust-panel h3 { margin: 0 0 8px; color: var(--dark); }
+      .step-card p,
+      .faq-item p,
+      .trust-panel p { margin: 0; color: var(--muted); }
+      .trust-panel {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+        margin-top: 24px;
+        padding: 24px;
+        background: linear-gradient(135deg, #fff, #f3fbff);
+      }
+      .trust-panel .btn { margin-top: 14px; }
+      .faq-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .faq-item { padding: 18px 20px; }
+      .faq-item summary { cursor: pointer; font-weight: 700; }
+      .faq-item p { padding-top: 8px; }
+      .review-invite {
+        margin-top: 22px;
+        padding: 22px;
+        border-radius: 18px;
+        background: var(--soft-green);
+      }
+      .review-invite h3 { margin: 0 0 6px; color: var(--dark); }
+      .review-invite p { margin: 0; color: var(--muted); }
+      .review-invite .btn { margin-top: 14px; }
+      .eyebrow {
+        color: var(--primary);
+      }
+      .service-grid,
+      .feature-grid,
+      .contact-grid,
+      .visit-grid {
+        display: grid;
+        gap: 24px;
+      }
+      .service-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+      .service-card,
+      .feature-item,
+      .contact-card,
+      .visit-copy {
+        background: #ffffff;
+        border: 1px solid rgba(13, 23, 39, 0.08);
+        border-radius: 22px;
+        box-shadow: 0 12px 28px rgba(15, 23, 42, 0.04);
+      }
+      .service-card {
+        padding: 14px 14px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .service-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 18px 36px rgba(15, 23, 42, 0.08);
+      }
+      .icon {
+        width: 44px;
+        height: 44px;
+        display: grid;
+        place-items: center;
+        border-radius: 14px;
+        background: linear-gradient(135deg, var(--soft-orange), var(--soft-blue));
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+      }
+      .service-card h3,
+      .feature-item h3 {
+        margin: 0 0 10px;
+        color: var(--dark);
+      }
+      .service-card p,
+      .feature-item p,
+      .visit-copy p,
+      .contact-card p,
+      .contact-list li {
+        color: var(--muted);
+      }
+      .feature-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+      .feature-item {
+        padding: 14px 14px;
+        background: linear-gradient(180deg, #ffffff, #f7fcff);
+      }
+      .feature-item span {
+        display: inline-flex;
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        color: white;
+        font-weight: 800;
+        margin-bottom: 14px;
+      }
+      .check-list {
+        display: grid;
+        gap: 12px;
+        margin-top: 22px;
+      }
+      .check-list div {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--dark);
+        font-weight: 600;
+      }
+      .check-list div::before {
+        content: "✓";
+        display: inline-flex;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        align-items: center;
+        justify-content: center;
+        background: var(--soft-green);
+        color: var(--accent-2);
+        font-weight: 900;
+      }
+      .contact-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .contact-card {
+        padding: 28px;
+      }
+      .contact-list {
+        list-style: none;
+        padding: 0;
+        margin: 24px 0 0;
+        display: grid;
+        gap: 12px;
+      }
+      .contact-list strong {
+        color: var(--dark);
+      }
+      .field-group {
+        margin-bottom: 18px;
+      }
+      .field-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 700;
+        color: var(--dark);
+      }
+      .field-group input,
+      .field-group textarea,
+      .field-group select {
+        width: 100%;
+        border: 1px solid rgba(13, 23, 39, 0.12);
+        border-radius: 12px;
+        padding: 12px 14px;
+        font: inherit;
+        background: #ffffff;
+        color: var(--dark);
+      }
+      .field-group input:focus,
+      .field-group textarea:focus,
+      .field-group select:focus {
+        outline: 2px solid rgba(0, 183, 255, 0.25);
+        border-color: var(--accent);
+      }
+      .full-width {
+        width: 100%;
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 28px;
+        align-items: center;
+      }
+      .eyebrow {
+        color: var(--accent);
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-weight: 800;
+        margin: 0 0 12px;
+      }
+      h1 {
+        font-size: clamp(2.1rem, 4vw, 3.2rem);
+        line-height: 1.04;
+        margin: 0 0 12px;
+        color: var(--dark);
+      }
+      .lead {
+        font-size: 1rem;
+        color: var(--muted);
+      }
+      .hero-actions {
+        display: flex;
+        gap: 16px;
+        margin-top: 24px;
+        flex-wrap: wrap;
+      }
+      .hero-actions .btn-primary {
+        padding: 18px 28px;
+        font-size: 1.06rem;
+        min-width: 260px;
+      }
+      .quick-stats {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        margin: 18px 0 0;
+        padding: 0;
+        flex-wrap: wrap;
+      }
+      .quick-stats li {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .quick-stats strong {
+        color: var(--dark);
+        font-size: 1.2rem;
+      }
+      .quick-stats span {
+        color: var(--muted);
+      }
+      .hero-visual {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .image-card {
+        width: min(100%, 560px);
+        border-radius: 28px;
+        overflow: hidden;
+        box-shadow: 0 18px 50px rgba(0,0,0,0.4);
+        border: 1px solid rgba(255,255,255,0.08);
+      }
+      .image-card img {
+        width: 100%;
+        height: 330px;
+        object-fit: cover;
+      }
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        display: inline-block;
+        background: #2ed573;
+        box-shadow: 0 0 0 5px rgba(46,213,115,0.18);
+      }
+      .phone-callout {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 16px;
+        flex-wrap: wrap;
+        font-weight: 800;
+        color: var(--dark);
+      }
+      .phone-callout a {
+        color: var(--dark);
+        font-size: 1.15rem;
+      }
+      @media (max-width: 760px) {
+        .hero-grid,
+        .service-grid,
+        .feature-grid,
+        .steps-grid,
+        .faq-grid,
+        .trust-panel {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-grid {
+          grid-template-columns: 1fr !important;
+          display: block;
+        }
+
+        .contact-card {
+          width: 100%;
+          padding: 20px 16px;
+          display: block;
+        }
+        .hero-actions {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .hero-actions .btn,
+        .hero-actions .btn-primary,
+        .hero-actions .btn-whatsapp {
+          width: 100%;
+          min-width: 0;
+          min-height: 58px;
+        }
+
+        .nav { flex-wrap: wrap; justify-content: center; }
+        .site-header .nav { flex-direction: column; gap: 4px; padding: 4px 0 10px; }
+        .desktop-service-menu { display: none; }
+        .nav-links { justify-content: center; }
+        .brand-placeholder {
+          width: min(150px, 42vw);
+          height: auto;
+          min-height: 58px;
+        }
+        .logo {
+          width: 100%;
+          height: auto;
+        }
+        .hero-actions .btn-primary {
+          width: 100%;
+          min-width: 0;
+        }
+        .quick-stats {
+          flex-direction: column;
+          gap: 10px;
+        }
+        .mobile-service-menu {
+          display: flex;
+          justify-content: center;
+          gap: 8px;
+          width: 100%;
+        }
+        .mobile-service-menu a {
+          display: grid;
+          width: 42px;
+          height: 42px;
+          place-items: center;
+          border: 1px solid rgba(0, 183, 255, 0.18);
+          border-radius: 12px;
+          background: linear-gradient(135deg, var(--soft-blue), var(--soft-orange));
+          color: var(--primary-dark);
+          font-size: 1.1rem;
+        }
+        .mobile-service-menu a:hover,
+        .mobile-service-menu a:focus-visible {
+          color: #fff;
+          border-color: transparent;
+          background: linear-gradient(135deg, var(--primary), var(--accent));
+          box-shadow: 0 8px 18px rgba(255, 122, 0, .22);
+          outline: 2px solid var(--accent);
+          outline-offset: 2px;
+          transform: translateY(-2px);
+        }
+        .mobile-service-menu a:active { background: var(--primary-dark); transform: scale(.95); }
+        .partners { display: none; }
+
+        .container { width: min(100% - 28px, 560px); }
+        .hero { padding: 24px 0 28px; }
+        .hero-grid { gap: 22px; }
+        .hero-copy { text-align: center; }
+        h1 { font-size: clamp(2rem, 9vw, 2.8rem); line-height: 1.08; }
+        .lead { margin: 0 auto; max-width: 540px; font-size: .98rem; }
+        .hero-actions { gap: 10px; margin-top: 20px; }
+        .hero-actions .btn { padding: 14px 18px; }
+        .quick-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 20px; text-align: center; }
+        .quick-stats li { min-width: 0; padding: 10px 6px; border: 1px solid rgba(13, 23, 39, .07); border-radius: 14px; background: #f8fbfd; }
+        .quick-stats strong { font-size: .82rem; line-height: 1.2; }
+        .quick-stats span { font-size: .68rem; line-height: 1.25; }
+        .image-card { border-radius: 20px; box-shadow: 0 14px 34px rgba(0, 0, 0, .16); }
+        .image-card img { height: clamp(210px, 62vw, 300px); }
+        .section { padding: 28px 0; }
+        .contact-grid { display: grid; gap: 14px; }
+        .contact-card { margin-bottom: 14px; border-radius: 18px; }
+        .contact-list { margin-top: 18px; gap: 10px; }
+        .service-grid { gap: 12px; }
+        .service-card { padding: 18px; border-radius: 18px; }
+        .service-card h3 { margin-bottom: 6px; font-size: 1.05rem; }
+        .service-card p { margin: 0; font-size: .94rem; }
+        .trust-section { padding: 30px 0; }
+        .section-heading { margin-bottom: 18px; }
+        .section-intro { font-size: .95rem; }
+        .steps-grid, .faq-grid { gap: 12px; margin-top: 16px; }
+        .step-card, .faq-item { padding: 17px; border-radius: 16px; }
+        .trust-panel { gap: 18px; margin-top: 18px; padding: 18px; border-radius: 18px; }
+        .review-invite { padding: 18px; border-radius: 16px; }
+        .site-footer .footer-row { display: grid; gap: 4px; text-align: center; }
+        .site-footer p { margin: 4px 0; font-size: .85rem; }
+      }
+      @media (max-width: 380px) {
+        .quick-stats { grid-template-columns: 1fr; }
+        .quick-stats li { flex-direction: row; justify-content: center; gap: 6px; }
+        .mobile-service-menu { gap: 6px; }
+        .mobile-service-menu a { width: 40px; height: 40px; }
+      }
+      @media (min-width: 761px) and (max-width: 1100px) {
+        .site-header .nav { gap: 12px; }
+        .brand-placeholder { width: 150px; height: 76px; flex: 0 0 150px; }
+        .desktop-service-menu { gap: 4px; }
+        .desktop-service-menu a { gap: 6px; padding: 8px 9px; font-size: .78rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <div class="brand-placeholder" aria-label="Espacio para logo">
+          <img src="./logo.png" alt="Soporte Tecnológico N&L" class="logo">
+        </div>
+        <nav class="desktop-service-menu" aria-label="Navegación principal">
+          <a href="#inicio" aria-label="Inicio"><i class="fa-solid fa-house" aria-hidden="true"></i>Inicio</a>
+          <a href="soporte-tecnico.html" target="_blank" rel="noopener noreferrer" aria-label="Soporte técnico"><i class="fa-solid fa-computer" aria-hidden="true"></i>Soporte técnico</a>
+          <a href="formateos.html" target="_blank" rel="noopener noreferrer" aria-label="Formateos"><i class="fa-solid fa-hard-drive" aria-hidden="true"></i>Formateos</a>
+          <a href="office-365.html" target="_blank" rel="noopener noreferrer" aria-label="Office 365"><i class="fa-solid fa-file-lines" aria-hidden="true"></i>Office 365</a>
+          <a href="instalacion.html" target="_blank" rel="noopener noreferrer" aria-label="Instalación"><i class="fa-solid fa-box-open" aria-hidden="true"></i>Instalación</a>
+        </nav>
+        <nav class="mobile-service-menu" aria-label="Menú de servicios">
+          <a href="#inicio" aria-label="Inicio" title="Inicio"><i class="fa-solid fa-house" aria-hidden="true"></i></a>
+          <a href="soporte-tecnico.html" aria-label="Soporte técnico" title="Soporte técnico"><i class="fa-solid fa-computer" aria-hidden="true"></i></a>
+          <a href="formateos.html" aria-label="Formateos" title="Formateos"><i class="fa-solid fa-hard-drive" aria-hidden="true"></i></a>
+          <a href="office-365.html" aria-label="Office 365" title="Office 365"><i class="fa-solid fa-file-lines" aria-hidden="true"></i></a>
+          <a href="instalacion.html" aria-label="Instalación" title="Instalación"><i class="fa-solid fa-box-open" aria-hidden="true"></i></a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="inicio" class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Tecnología que funciona a tu favor</p>
+            <h1>Reparamos tu equipo y te lo devolvemos funcionando.</h1>
+            <p class="lead">
+              Soporte técnico rápido para hogar, oficina y negocios. Formateos, instalación de programas, Office 365 y visitas a domicilio con atención directa y sin complicaciones.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="https://wa.me/573007849089?text=Hola%2C%20quiero%20más%20información%20sobre%20sus%20servicios." target="_blank" rel="noopener noreferrer">Escribenos Ahora</a>
+              <a class="btn btn-whatsapp" href="https://wa.me/573126053966?text=Hola%2C%20quiero%20ayuda%20técnica%20o%20información%20de%20sus%20servicios." target="_blank" rel="noopener noreferrer">Escribenos Ahora</a>
+            </div>
+
+            <ul class="quick-stats">
+              <li><strong>Atención cercana</strong><span>Orientación directa</span></li>
+              <li><strong>Horario flexible</strong><span>Según disponibilidad</span></li>
+              <li><strong>Soluciones prácticas</strong><span>Para tu computador</span></li>
+            </ul>
+          </div>
+
+          <div class="hero-visual">
+            <div class="image-card main-card">
+              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80" alt="Técnico trabajando con computadora" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contacto" class="contact section">
+        <div class="container contact-grid">
+          <div class="contact-card info">
+            <p class="eyebrow">Contacto</p>
+            <h2>Hablemos de tu equipo.</h2>
+            <p>
+              Soporte técnico, mantenimiento, Office 365 y soluciones rápidas para tu computador.
+            </p>
+
+            <ul class="contact-list">
+              <li><strong>Nombre:</strong> Nikole Dayan Herrera Nuñez & Luis Felipe Duarte Saldaña</li>
+              <li><strong>Especialidad:</strong> Técnicos en soporte</li>
+              <li><strong>Servicio:</strong> Visitas a domicilio</li>
+              <li><strong>Horarios:</strong> Atención flexible según disponibilidad</li>
+            </ul>
+
+          </div>
+
+          <div class="contact-card form-box">
+            <form id="contactForm" action="https://formsubmit.co/nikole.herrera182@gmail.com" method="POST">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_subject" value="Nueva consulta desde la web de soporte técnico">
+
+              <div class="field-group">
+                <label for="nombre">Nombre</label>
+                <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" required />
+              </div>
+
+              <div class="field-group">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="tuemail@ejemplo.com" required />
+              </div>
+
+              <div class="field-group">
+                <label for="telefono">Teléfono</label>
+                <input id="telefono" name="telefono" type="tel" placeholder="Tu teléfono" required />
+              </div>
+
+              <div class="field-group">
+                <label for="mensaje">Mensaje</label>
+                <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe aquí el detalle del problema o servicio que necesitas" required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary full-width">Enviar consulta</button>
+              <p id="successMessage" style="display:none; margin-top: 14px; color: #0f9d58; font-weight: 700;">Gracias, tu consulta fue enviada correctamente.</p>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section id="servicios" class="services section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Nuestros servicios</p>
+            <h2>Lo que necesitas para seguir funcionando.</h2>
+          </div>
+          <div class="service-grid">
+            <article class="service-card">
+              <div class="icon" aria-hidden="true"><i class="fa-solid fa-computer"></i></div>
+              <h3>Soporte técnico</h3>
+              <p>Reparación, mantenimiento y optimización de equipos.</p>
+            </article>
+
+            <article class="service-card">
+              <div class="icon" aria-hidden="true"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+              <h3>Formateos</h3>
+              <p>Instalación limpia y configuración inicial del sistema.</p>
+            </article>
+
+            <article class="service-card">
+              <div class="icon" aria-hidden="true"><i class="fa-solid fa-box-open"></i></div>
+              <h3>Programas</h3>
+              <p>Instalación de software para trabajo y seguridad.</p>
+            </article>
+
+            <article class="service-card">
+              <div class="icon" aria-hidden="true"><i class="fa-solid fa-file-lines"></i></div>
+              <h3>Office 365</h3>
+              <p>Correo, Word, Excel y configuración de Microsoft.</p>
+            </article>
+
+            <article class="service-card">
+              <div class="icon" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></div>
+              <h3>Seguridad</h3>
+              <p>Antivirus, limpieza y protección del equipo.</p>
+            </article>
+
+            <article class="service-card">
+              <div class="icon" aria-hidden="true"><i class="fa-solid fa-house"></i></div>
+              <h3>Domicilio</h3>
+              <p>Visitas rápidas a tu casa o negocio.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="trust-section section" aria-labelledby="proceso-titulo">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Fácil y transparente</p>
+            <h2 id="proceso-titulo">¿Cómo funciona el servicio?</h2>
+            <p class="section-intro">Cuéntanos qué necesita tu equipo y te orientamos para definir el siguiente paso.</p>
+          </div>
+          <div class="steps-grid">
+            <article class="step-card">
+              <span class="step-number">01</span>
+              <h3>Cuéntanos el problema</h3>
+              <p>Escríbenos por WhatsApp o completa el formulario con el tipo de equipo y lo que está ocurriendo.</p>
+            </article>
+            <article class="step-card">
+              <span class="step-number">02</span>
+              <h3>Recibe orientación</h3>
+              <p>Revisamos la información contigo y te indicamos las opciones de atención y disponibilidad.</p>
+            </article>
+            <article class="step-card">
+              <span class="step-number">03</span>
+              <h3>Coordina el servicio</h3>
+              <p>Consulta el valor y los detalles del servicio antes de acordar cómo continuar.</p>
+            </article>
+          </div>
+
+          <div class="trust-panel">
+            <div>
+              <p class="eyebrow">Atención a domicilio</p>
+              <h3>¿No sabes si llegamos a tu zona?</h3>
+              <p>Escríbenos con tu barrio o ciudad y te confirmamos si hay disponibilidad para atenderte.</p>
+              <a class="btn btn-whatsapp" href="https://wa.me/573007849089?text=Hola%2C%20quiero%20consultar%20si%20atienden%20en%20mi%20zona." target="_blank" rel="noopener noreferrer">Consultar cobertura</a>
+            </div>
+            <div>
+              <p class="eyebrow">Cotización</p>
+              <h3>Conoce el valor antes de coordinar</h3>
+              <p>El costo depende del servicio y de lo que necesite el equipo. Cuéntanos el caso para consultar un valor y disponibilidad.</p>
+              <a class="btn btn-primary" href="https://wa.me/573126053966?text=Hola%2C%20quiero%20consultar%20el%20valor%20de%20un%20servicio%20t%C3%A9cnico." target="_blank" rel="noopener noreferrer">Pedir cotización</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="trust-section section" aria-labelledby="faq-titulo">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Resolvemos tus dudas</p>
+            <h2 id="faq-titulo">Preguntas frecuentes</h2>
+          </div>
+          <div class="faq-grid">
+            <details class="faq-item">
+              <summary>¿Qué información envío para pedir ayuda?</summary>
+              <p>Cuéntanos qué tipo de equipo tienes, qué falla presenta y desde cuándo ocurre. Si aparece un mensaje de error, puedes incluirlo.</p>
+            </details>
+            <details class="faq-item">
+              <summary>¿Atienden a domicilio en mi zona?</summary>
+              <p>La disponibilidad depende de la ubicación y el horario. Envíanos tu barrio o ciudad para consultarlo.</p>
+            </details>
+            <details class="faq-item">
+              <summary>¿Cuánto cuesta el servicio?</summary>
+              <p>El valor depende del trabajo requerido. Escríbenos para consultar la cotización antes de coordinar.</p>
+            </details>
+            <details class="faq-item">
+              <summary>¿Debo respaldar mis archivos antes de un formateo?</summary>
+              <p>Sí. Guarda tus documentos, fotos y demás archivos importantes en una copia de seguridad antes de iniciar el formateo.</p>
+            </details>
+          </div>
+          <div class="review-invite">
+            <h3>¿Ya recibiste nuestro servicio?</h3>
+            <p>Tu opinión puede ayudar a otras personas a elegir soporte técnico. Escríbenos tu comentario por WhatsApp.</p>
+            <a class="btn btn-whatsapp" href="https://wa.me/573007849089?text=Hola%2C%20quiero%20compartir%20mi%20opini%C3%B3n%20sobre%20el%20servicio%20recibido." target="_blank" rel="noopener noreferrer">Compartir mi opinión</a>
+          </div>
+        </div>
+      </section>
+
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-row">
+        <p>© 2026 Soporte Técnico Profesional</p>
+        <p>Tu solución en soporte, instalación y mantenimiento.</p>
+      </div>
+    </footer>
+
+    <script>
+      const form = document.getElementById('contactForm');
+      const successMessage = document.getElementById('successMessage');
+
+      if (form) {
+        form.addEventListener('submit', function () {
+          successMessage.style.display = 'block';
+          setTimeout(() => {
+            form.reset();
+          }, 100);
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Servicio de formateo, reinstalación y configuración de computadores." />
+    <title>Formateos | Soporte Tecnológico N&amp;L</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root { --primary: #ff7a00; --accent: #00b7ff; --dark: #0d1727; --text: #1f2937; --muted: #5f6d7a; --soft-blue: #eaf8ff; --soft-orange: #fff3e7; --white: #fff; }
+      * { box-sizing: border-box; }
+      body { margin: 0; color: var(--text); background: linear-gradient(180deg, #f7fbff 0, var(--white) 440px); font-family: Inter, sans-serif; line-height: 1.6; }
+      a { color: inherit; text-decoration: none; }
+      .container { width: min(1080px, calc(100% - 32px)); margin: 0 auto; }
+      .header { position: sticky; top: 0; z-index: 20; padding: 14px 0; border-bottom: 1px solid rgba(13, 23, 39, .08); background: rgba(255, 255, 255, .96); backdrop-filter: blur(14px); }
+      .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+      .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--dark); font-weight: 800; }
+      .brand img { display: block; width: 54px; height: 54px; object-fit: contain; }
+      .nav-menu { display: flex; align-items: center; justify-content: flex-end; gap: 8px 18px; flex-wrap: wrap; }
+      .nav-menu a { color: var(--muted); font-size: .88rem; font-weight: 600; }
+      .nav-icon { display: none; }
+      .nav-menu a:hover, .nav-menu a:focus-visible, .nav-menu a[aria-current="page"] { color: var(--primary); }
+      .hero { padding: clamp(48px, 6vw, 76px) 0 40px; text-align: center; }
+      .eyebrow { margin: 0 0 12px; color: var(--primary); font-size: .78rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+      h1 { max-width: 760px; margin: 0 auto 18px; color: var(--dark); font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1.08; }
+      .intro { max-width: 700px; margin: 0 auto; color: var(--muted); font-size: 1.08rem; }
+      .button { display: inline-flex; align-items: center; justify-content: center; margin-top: 26px; padding: 15px 24px; border-radius: 12px; color: var(--white); background: linear-gradient(135deg, var(--primary), #ff9f1c, var(--accent)); box-shadow: 0 14px 30px rgba(255, 122, 0, .22); font-weight: 800; transition: transform .2s ease; }
+      .button:hover { transform: translateY(-2px); }
+      .services { padding: 20px 0 56px; }
+      .visual { max-width: 1000px; margin: 0 auto 24px; overflow: hidden; border-radius: 24px; box-shadow: 0 18px 44px rgba(15, 23, 42, .12); }
+      .visual img { display: block; width: 100%; height: clamp(250px, 28vw, 360px); object-fit: cover; }
+      .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; gap: 18px; }
+      .card { min-height: 205px; padding: 24px; border: 1px solid rgba(13, 23, 39, .08); border-radius: 20px; background: var(--white); box-shadow: 0 12px 28px rgba(15, 23, 42, .05); }
+      .icon { display: grid; width: 48px; height: 48px; margin-bottom: 14px; place-items: center; border-radius: 15px; background: linear-gradient(135deg, var(--soft-orange), var(--soft-blue)); font-size: 1.45rem; }
+      h2 { margin: 0 0 8px; color: var(--dark); font-size: 1.12rem; }
+      .card p { margin: 0; color: var(--muted); }
+      .details { padding: 0 0 56px; }
+      .details-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; gap: 18px; }
+      .details-card { min-height: 190px; padding: 24px; border: 1px solid rgba(13, 23, 39, .08); border-radius: 20px; background: var(--white); }
+      .details-card h2 { margin-bottom: 12px; }
+      .details-card ul { margin: 0; padding-left: 20px; color: var(--muted); }
+      .details-card li + li { margin-top: 8px; }
+      .note { margin: 28px 0 0; padding: 18px 20px; border-radius: 16px; background: var(--soft-blue); color: var(--dark); text-align: center; }
+      .final-cta { max-width: 900px; margin: 24px auto 0; padding: 28px; border-radius: 22px; background: linear-gradient(135deg, #fff3e7, #eaf8ff); text-align: center; }
+      .final-cta h2 { font-size: 1.45rem; }
+      .final-cta p { margin: 0; color: var(--muted); }
+      footer { padding: 22px 0; border-top: 1px solid rgba(13, 23, 39, .08); color: var(--muted); font-size: .9rem; text-align: center; }
+      @media (max-width: 700px) { .grid, .details-grid { grid-template-columns: 1fr; } .header-inner { align-items: flex-start; flex-direction: column; } .brand img { width: 42px; height: 42px; } .nav-menu { width: 100%; justify-content: center; gap: 8px; } .nav-menu a { display: grid; width: 44px; height: 44px; place-items: center; border: 1px solid rgba(255, 122, 0, .2); border-radius: 12px; background: linear-gradient(135deg, var(--soft-orange), var(--soft-blue)); color: var(--primary-dark); font-size: 1.15rem; transition: color .2s ease, background .2s ease, transform .2s ease, box-shadow .2s ease; } .nav-menu a:hover, .nav-menu a:focus-visible, .nav-menu a[aria-current="page"] { color: #fff; border-color: transparent; background: linear-gradient(135deg, var(--primary), var(--accent)); box-shadow: 0 8px 18px rgba(255, 122, 0, .22); } .nav-menu a:active { background: var(--primary-dark); transform: scale(.95); } .nav-label { display: none; } .nav-icon { display: inline; } .card, .details-card { padding: 20px; } }
+      @media (max-width: 700px) {
+        .container { width: min(100% - 28px, 560px); }
+        .header { padding: 10px 0; }
+        .header-inner { gap: 8px; }
+        .brand { font-size: .95rem; }
+        .hero { padding: 34px 0 24px; }
+        h1 { font-size: clamp(2rem, 9vw, 2.8rem); }
+        .intro { font-size: .98rem; }
+        .button { width: 100%; min-height: 52px; padding: 13px 16px; }
+        .services { padding: 18px 0 36px; }
+        .visual { margin-bottom: 18px; border-radius: 18px; }
+        .visual img { height: clamp(200px, 58vw, 280px); }
+        .grid { gap: 12px; }
+        .card, .details-card { padding: 18px; border-radius: 17px; }
+        .details { padding-bottom: 36px; }
+        .details-grid { gap: 12px; }
+        .note { margin-top: 18px; padding: 16px; text-align: left; }
+        .final-cta { margin-top: 16px; padding: 20px 16px; border-radius: 18px; }
+        footer { padding: 18px 0; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header"><div class="container header-inner"><a class="brand" href="index.html"><img src="./logo.png" alt="" />Soporte Tecnológico N&amp;L</a><nav class="nav-menu" aria-label="Navegación principal"><a href="index.html" aria-label="Inicio" title="Inicio"><span class="nav-icon" aria-hidden="true"><i class="fa-solid fa-house"></i></span><span class="nav-label">Inicio</span></a><a href="soporte-tecnico.html" aria-label="Soporte técnico" title="Soporte técnico"><span class="nav-icon" aria-hidden="true"><i class="fa-solid fa-computer"></i></span><span class="nav-label">Soporte técnico</span></a><a href="formateos.html" aria-current="page" aria-label="Formateos" title="Formateos"><span class="nav-icon" aria-hidden="true"><i class="fa-solid fa-hard-drive"></i></span><span class="nav-label">Formateos</span></a><a href="office-365.html" aria-label="Office 365" title="Office 365"><span class="nav-icon" aria-hidden="true"><i class="fa-solid fa-file-lines"></i></span><span class="nav-label">Office 365</span></a><a href="instalacion.html" aria-label="Instalación" title="Instalación"><span class="nav-icon" aria-hidden="true"><i class="fa-solid fa-box-open"></i></span><span class="nav-label">Instalación</span></a></nav></div></header>
+    <main>
+      <section class="hero"><div class="container"><p class="eyebrow">Instalación limpia del sistema</p><h1>Formateo y configuración para empezar de nuevo.</h1><p class="intro">Preparamos tu computador con una instalación limpia del sistema operativo y su configuración inicial, para que puedas volver a usarlo con tranquilidad.</p><a class="button" href="https://wa.me/573007849089?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20servicio%20de%20formateo." target="_blank" rel="noopener noreferrer">Solicitar formateo por WhatsApp</a></div></section>
+      <section class="services"><div class="container">
+        <figure class="visual"><img src="windows-inicio.svg" alt="Ilustración de la pantalla azul de inicio de Windows con el mensaje Iniciando Windows" loading="lazy" /></figure>
+        <div class="grid">
+        <article class="card"><div class="icon" aria-hidden="true"><i class="fa-solid fa-floppy-disk"></i></div><h2>Instalación del sistema</h2><p>Instalación limpia y configuración básica del sistema operativo. Se confirma la compatibilidad antes de comenzar.</p></article>
+        <article class="card"><div class="icon" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></div><h2>Preparación del equipo</h2><p>Revisamos las necesidades del equipo y te orientamos antes de iniciar el proceso.</p></article>
+        <article class="card"><div class="icon" aria-hidden="true"><i class="fa-solid fa-rotate"></i></div><h2>Puesta a punto</h2><p>Configuración inicial y asistencia para dejar el equipo listo para volver a utilizarse.</p></article>
+      </div><p class="note">Antes de formatear, respalda tus archivos importantes. El respaldo de datos y las licencias del sistema no se incluyen salvo acuerdo previo.</p></div></section>
+      <section class="details"><div class="container"><div class="details-grid">
+        <article class="details-card"><h2>¿Cuándo puede servir?</h2><ul><li>Cuando el sistema presenta errores persistentes.</li><li>Si necesitas reinstalar y configurar el sistema operativo.</li><li>Para preparar el equipo para un nuevo uso, previa revisión de compatibilidad.</li></ul></article>
+        <article class="details-card"><h2>Qué tener en cuenta</h2><ul><li>Haz una copia de seguridad de documentos, fotos y archivos importantes.</li><li>El sistema y los controladores dependen de la compatibilidad del equipo.</li><li>Licencias, repuestos y trabajos adicionales se cotizan o acuerdan por separado.</li></ul></article>
+      </div><div class="final-cta"><h2>¿Estás pensando en formatear tu equipo?</h2><p>Cuéntanos el modelo del computador y qué problema presenta para consultar el proceso.</p><a class="button" href="https://wa.me/573007849089?text=Hola%2C%20quiero%20consultar%20un%20formateo.%20Mi%20equipo%20es%20y%20presenta%20este%20problema%3A%20" target="_blank" rel="noopener noreferrer">Consultar formateo</a></div></div></section>
+    </main>
+    <footer>© 2026 Soporte Técnico Profesional</footer>
+  </body>
+</html>
